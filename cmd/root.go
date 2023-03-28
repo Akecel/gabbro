@@ -15,12 +15,12 @@ var (
 )
 
 // Return the command.
-func NewRootCmd() *cobra.Command {
+func NewRootCmd() (*cobra.Command) {
     return rootCmd
 }
 
 // Execute executes the root command.
-func Execute() error {
+func Execute() (error) {
 	return rootCmd.Execute()
 }
 

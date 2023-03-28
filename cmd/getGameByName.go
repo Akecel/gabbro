@@ -6,9 +6,9 @@ import (
 	"log"
 
 	"github.com/akecel/gabbro/config"
+	"github.com/akecel/gabbro/utils"
 
 	"github.com/Henry-Sarabia/igdb/v2"
-	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 )
 
@@ -23,7 +23,7 @@ var getGameByNameCmd = &cobra.Command{
 }
 
 // Return the command.
-func NewGetGameByNameCmd() *cobra.Command {
+func NewGetGameByNameCmd() (*cobra.Command) {
     return getGameByNameCmd
 }
 
@@ -43,8 +43,7 @@ func getGame(args []string) {
 		log.Fatal(err)
 	}
 
-	title := color.New(color.FgCyan, color.Bold, color.Underline).SprintFunc()
-
+	title := utils.SetColor()
 	fmt.Printf("%s %s\n", title("Name:"), game[0].Name)
 	fmt.Printf("%s %s\n", title("Description:"), game[0].Summary)
 	fmt.Printf("%s %s\n", title("URL:"), game[0].URL)

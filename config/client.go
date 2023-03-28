@@ -5,7 +5,7 @@ import (
 	"github.com/Henry-Sarabia/igdb/v2"
 )
 
-func InitClient() *igdb.Client {
+func InitClient() (*igdb.Client) {
 	clientId := viper.GetString("CLIENT_ID")
 	accessToken := viper.GetString("ACCESS_TOKEN")
 
