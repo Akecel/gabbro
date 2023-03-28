@@ -8,16 +8,11 @@ import (
 
 // InitConfig set all configuration for the app
 func InitConfig() {
-	viper.SetConfigFile(".env")
-
-	err := viper.ReadInConfig()
-	if err != nil {
-		panic(fmt.Errorf("Fatal error config file: %s", err.Error()))
-	}
-}
-
-func InitTestConfig() {
-	viper.SetConfigFile("../.env")
+	viper.AddConfigPath(".")
+	viper.AddConfigPath("$HOME/bin/")
+	viper.SetConfigName("gabbro")
+	viper.SetConfigType("yaml")
+	viper.AutomaticEnv() 
 
 	err := viper.ReadInConfig()
 	if err != nil {

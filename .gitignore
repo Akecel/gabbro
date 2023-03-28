@@ -1,4 +1,4 @@
 main
 gabbro
-.env
+gabbro.yaml
 *DS_Store
