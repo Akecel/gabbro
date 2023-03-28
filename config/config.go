@@ -10,8 +10,17 @@ import (
 func InitConfig() {
 	viper.SetConfigFile(".env")
 
-	err := viper.ReadInConfig() // Find and read the config file
-	if err != nil {             // Handle errors reading the config file
+	err := viper.ReadInConfig()
+	if err != nil {
+		panic(fmt.Errorf("Fatal error config file: %s", err.Error()))
+	}
+}
+
+func InitTestConfig() {
+	viper.SetConfigFile("../.env")
+
+	err := viper.ReadInConfig()
+	if err != nil {
 		panic(fmt.Errorf("Fatal error config file: %s", err.Error()))
 	}
 }

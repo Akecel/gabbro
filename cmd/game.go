@@ -12,26 +12,24 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// getGameByNameCmd represents the getGameByName command
-var getGameByNameCmd = &cobra.Command{
+// gameCmd represents the getGameByName command
+var gameCmd = &cobra.Command{
 	Use:   "game",
 	Short: "Get game information by name",
 	Long: `Get several informations about a game by using it name for searching in IGDB database.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		getGame(args)
-	},
+	Run: GetGame,
 }
 
 // Return the command.
-func NewGetGameByNameCmd() (*cobra.Command) {
-    return getGameByNameCmd
+func NewGameCmd() (*cobra.Command) {
+    return gameCmd
 }
 
 func init() {
-	rootCmd.AddCommand(getGameByNameCmd)
+	rootCmd.AddCommand(gameCmd)
 }
 
-func getGame(args []string) {
+func GetGame(cmd *cobra.Command, args []string) {
 	client := config.InitClient()
 	game, err := client.Games.Search(
 		strings.Join(args, " "),
