@@ -12,7 +12,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// gameCmd represents the getGameByName command
+// gameCmd represents the game command
 var gameCmd = &cobra.Command{
 	Use:   "game",
 	Short: "Get game information by name",
