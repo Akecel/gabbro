@@ -18,7 +18,7 @@ TODO
 ## Usage
 
 ```bash
-❯ gabbro game Outer Wilds   
+❯ gabbro game Outer Wilds
 ```
 
 ## Contributing
