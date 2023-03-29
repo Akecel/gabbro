@@ -1,6 +1,16 @@
 <h1 align="center"> Gabbro CLI 👾</h1>
 <div align="center">
 
+<p>
+
+  [![Go Doc](https://godoc.org/github.com//Akecel/gabbro?status.svg)](https://godoc.org/github.com/Akecel/gabbro)
+  ![Build](https://github.com/Akecel/gabbro/workflows/build/badge.svg?branch=master)
+  [![Go Report](https://goreportcard.com/badge/github.com/Akecel/gabbro)](https://goreportcard.com/report/github.com/Akecel/gabbro)
+  ![Version](https://img.shields.io/github/v/release/Akecel/gabbro.svg)
+  ![Licence](https://img.shields.io/badge/License-MIT-blue.svg)
+
+</p>
+
 </div>
 
 ## About Gabbro
