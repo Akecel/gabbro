@@ -1,8 +1,6 @@
 package config
 
 import (
-	"flag"
-
 	"github.com/Henry-Sarabia/igdb/v2"
 	"github.com/spf13/viper"
 )
