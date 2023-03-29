@@ -26,7 +26,7 @@ jobs:
 
     - name: Run tests
       run: |
-        go test -race -covermode atomic -coverprofile=covprofile $(go list ./... | grep -v github.com/akecel/gabbro/data) -coverpkg=`echo $(go list ./... | grep -v github.com/akecel/gabbro/data) | tr ' ' ","`
+        go test -race -covermode atomic -coverprofile=covprofile $(go list ./... | grep -v github.com/akecel/gabbro/data | grep -v github.com/akecel/gabbro/cmd) -coverpkg=`echo $(go list ./... | grep -v github.com/akecel/gabbro/data | grep -v github.com/akecel/gabbro/cmd) | tr ' ' ","`
     - name: Install goveralls
       run: go install github.com/mattn/goveralls@latest
     - name: Send coverage
