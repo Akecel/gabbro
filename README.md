@@ -6,6 +6,7 @@
   [![Go Doc](https://godoc.org/github.com//Akecel/gabbro?status.svg)](https://godoc.org/github.com/Akecel/gabbro)
   [![Testing](https://github.com/Akecel/gabbro/actions/workflows/go.yml/badge.svg?branch=master&event=push)](https://github.com/Akecel/gabbro/actions/workflows/go.yml)
   [![Go Report Card](https://goreportcard.com/badge/github.com/akecel/gabbro)](https://goreportcard.com/report/github.com/akecel/gabbro)
+  [![Coverage Status](https://coveralls.io/repos/github/Akecel/gabbro/badge.svg?branch=master)](https://coveralls.io/github/Akecel/gabbro?branch=master)
   ![Version](https://img.shields.io/github/v/release/Akecel/gabbro.svg)
   ![Licence](https://img.shields.io/badge/License-MIT-blue.svg)
 
