@@ -9,7 +9,7 @@ import (
 )
 
 func TestRootCmd(t *testing.T) {
-	command := cmd.NewRootCmd()
+	command := cmd.RootCmd
 	buf := new(bytes.Buffer)
 	command.SetOut(buf)
 

@@ -6,7 +6,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-// InitConfig set all configuration for the app
 func InitConfig() {
 	viper.AddConfigPath(".")
 	viper.AddConfigPath("$HOME/bin/")

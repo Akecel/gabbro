@@ -6,6 +6,8 @@ import (
 )
 
 func InitClient() (*igdb.Client) {
+	InitConfig()
+
 	clientId := viper.GetString("client-id")
 	accessToken := viper.GetString("access-token")
 
