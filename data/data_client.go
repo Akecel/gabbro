@@ -8,11 +8,9 @@ import (
 	"github.com/Henry-Sarabia/igdb/v2"
 )
 
-var client *igdb.Client
-
-func init() {
+var (
 	client = config.InitClient()
-}
+)
 
 func GetGameData(name string, limit int) []*igdb.Game {
 	game, err := client.Games.Search(
