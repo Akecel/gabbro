@@ -11,7 +11,7 @@ func InitConfig() {
 	viper.AddConfigPath("$HOME/bin/")
 	viper.SetConfigName("gabbro")
 	viper.SetConfigType("yaml")
-	viper.AutomaticEnv() 
+	viper.AutomaticEnv()
 
 	err := viper.ReadInConfig()
 	if err != nil {

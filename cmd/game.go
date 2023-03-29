@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/akecel/gabbro/utils"
 	"github.com/akecel/gabbro/data"
+	"github.com/akecel/gabbro/utils"
 
 	"github.com/spf13/cobra"
 )
@@ -14,8 +14,8 @@ import (
 var GameCmd = &cobra.Command{
 	Use:   "game",
 	Short: "Get game information by name",
-	Long: `Get several informations about a game by using it name for searching in IGDB database.`,
-	Run: GetGame,
+	Long:  `Get several informations about a game by using it name for searching in IGDB database.`,
+	Run:   GetGame,
 }
 
 func init() {

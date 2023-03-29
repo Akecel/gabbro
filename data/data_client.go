@@ -2,7 +2,7 @@ package data
 
 import (
 	"log"
-	
+
 	"github.com/akecel/gabbro/config"
 
 	"github.com/Henry-Sarabia/igdb/v2"
@@ -14,7 +14,7 @@ func init() {
 	client = config.InitClient()
 }
 
-func GetGameData(name string, limit int) ([]*igdb.Game) {
+func GetGameData(name string, limit int) []*igdb.Game {
 	game, err := client.Games.Search(
 		name,
 		igdb.SetFields("*"),
