@@ -5,7 +5,7 @@
 
   [![Go Doc](https://godoc.org/github.com//Akecel/gabbro?status.svg)](https://godoc.org/github.com/Akecel/gabbro)
   [![Testing](https://github.com/Akecel/gabbro/actions/workflows/go.yml/badge.svg?branch=master&event=push)](https://github.com/Akecel/gabbro/actions/workflows/go.yml)
-  [![Go Report Card](https://goreportcard.com/badge/github.com/Akecel/gabbro)](https://goreportcard.com/report/github.com/Akecel/gabbro)
+  [![Go Report Card](https://goreportcard.com/badge/github.com/akecel/gabbro)](https://goreportcard.com/report/github.com/akecel/gabbro)
   ![Version](https://img.shields.io/github/v/release/Akecel/gabbro.svg)
   ![Licence](https://img.shields.io/badge/License-MIT-blue.svg)
 
