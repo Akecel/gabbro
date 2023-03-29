@@ -9,6 +9,7 @@ import (
 func InitConfig() {
 	viper.AddConfigPath(".")
 	viper.AddConfigPath("$HOME/bin/")
+	viper.AddConfigPath("./tests/")
 	viper.SetConfigName("gabbro")
 	viper.SetConfigType("yaml")
 	viper.AutomaticEnv()
