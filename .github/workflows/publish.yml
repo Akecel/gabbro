@@ -1,0 +1,30 @@
+name: Build and Publish
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+
+      - name: Build
+        run: go build -o gabbro
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: "https://uploads.github.com/repos/{owner}/{repo}/releases/{release_id}/assets{?name,label}"
+          asset_path: ./gabbro
+          asset_name: gabbro
+          token: ${{ secrets.GITHUB_TOKEN }}
+          asset_content_type: application/octet-stream
