@@ -9,6 +9,9 @@ on:
         description: 'Tag release version'
         required: true
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -39,3 +42,4 @@ jobs:
         run: gh release upload v${{ steps.tag.outputs.tag }} gabbro
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
