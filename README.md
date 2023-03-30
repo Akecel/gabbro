@@ -16,14 +16,14 @@
 
 ## About Gabbro
 
-Gabbro is a simple CLI written in Go allowing a simplified interaction with the **IGDB API** 🎮.
+Gabbro is a simple CLI written in Go allowing a simplified interaction with the **IGDB API**.
 
 ### Features
 
 - Get several informations of a game by searching by it name :
   - Name, Description, Companies, Genres, Themes, DLCs, Rating, etc.
 
->For the moment, Gabbro works only on **MacOs**, binary compatible with other platforms will arrive soon!
+>For the moment, Gabbro works only on **MacOs**, binaries compatible with other platforms will arrive soon!
 
 ## Installation
 
@@ -31,7 +31,7 @@ Gabbro is a simple CLI written in Go allowing a simplified interaction with the 
 
 To get started, you must download the lastest published binary of the application : 
 
-**[Download the Gabbro binary](https://github.com/octo-org/octo-repo/releases/latest/download/gabbro)**
+**[Download the Gabbro binary](https://github.com/akecel/gabbro/releases/latest/download/gabbro)**
 
 Then put the binary in your `$HOME/bin` directory and, if it's not already done, add `$HOME/bin` to your `$PATH`.
 
@@ -42,7 +42,7 @@ export PATH="$HOME/bin:$PATH"
 Before we go, we still have one more step 😉
 ### Configuration
 
-You will now have to create identifiers for the IGDB API that you will put in the configuration file.
+You will now have to create crendentials for the **IGDB API** that you will put in the configuration file.
 
 To do this, follow these steps :
 - Sign Up with [Twitch](https://dev.twitch.tv/login) for a free account.
