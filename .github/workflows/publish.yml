@@ -3,14 +3,29 @@ name: Build and Publish
 on:
   release:
     types: [created]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag release version'
+        required: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+     - name: Extract the tag version
+        id: tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            GITHUB_REF=${{ github.event.inputs.tag }}
+          fi          
+          echo "tag=${GITHUB_REF##*v}" >> "$GITHUB_OUTPUT"
+
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: v${{ steps.tag.outputs.tag }}
 
       - name: Setup Go
         uses: actions/setup-go@v3
@@ -21,11 +36,6 @@ jobs:
         run: go build -o gabbro
 
       - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
+        run: gh release upload v${{ steps.tag.outputs.tag }} gabbro
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: "https://uploads.github.com/repos/{owner}/{repo}/releases/{release_id}/assets{?name,label}"
-          asset_path: ./gabbro
-          asset_name: gabbro
-          asset_content_type: application/octet-stream
