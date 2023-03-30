@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-     - name: Extract the tag version
+      - name: Extract the tag version
         id: tag
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
