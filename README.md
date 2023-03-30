@@ -16,20 +16,90 @@
 
 ## About Gabbro
 
-Gabbro is a simple CLI written in Go allowing a simplified interaction with the IGDB API.
+Gabbro is a simple CLI written in Go allowing a simplified interaction with the **IGDB API** 🎮.
 
 ### Features
 
-- Get several informations of a game by searching by it name
+- Get several informations of a game by searching by it name :
+  - Name, Description, Companies, Genres, Themes, DLCs, Rating, etc.
+
+>For the moment, Gabbro works only on **MacOs**, binary compatible with other platforms will arrive soon!
 
 ## Installation
 
-TODO
+### Setting up the CLI
+
+To get started, you must download the lastest published binary of the application : 
+
+**[Download the Gabbro binary](https://github.com/octo-org/octo-repo/releases/latest/download/gabbro)**
+
+Then put the binary in your `$HOME/bin` directory and, if it's not already done, add `$HOME/bin` to your `$PATH`.
+
+```bash
+export PATH="$HOME/bin:$PATH"
+```
+
+Before we go, we still have one more step 😉
+### Configuration
+
+You will now have to create identifiers for the IGDB API that you will put in the configuration file.
+
+To do this, follow these steps :
+- Sign Up with [Twitch](https://dev.twitch.tv/login) for a free account.
+- Ensure you have Two Factor Authentication [enabled](https://www.twitch.tv/settings/security).
+- Register your application in the [Twitch Developer Portal](https://dev.twitch.tv/console/apps/create).
+- [Manage](https://dev.twitch.tv/console/apps) your newly created application.
+- Generate a Client Secret by pressing [New Secret].
+- Take note of the Client ID and Client Secret.
+
+Once this is done, you can create a `gabbro.yaml` file in your `$HOME/bin` folder.
+
+```yaml
+client-id: "your-client-id"
+access-token: "your-access-token"
+```
+
+You can verify that the CLI is properly installed and configured by using this command:
+
+```bash
+❯ gabbro
+
+Gabbro is a simple CLI written in Go allowing interaction with the IGDB API. It is possible to search for information about specific video game and many other things.
+
+Usage:
+  gabbro [command]
+
+Available Commands:
+  game        Get game informations
+  help        Help about any command
+
+Flags:
+  -h, --help   help for gabbro
+
+Use "gabbro [command] --help" for more information about a command.
+```
+
+You are now ready to go ! 🚀
 
 ## Usage
 
+### Game command
+
+Use the game command to get several informations about a specific game :
 ```bash
 ❯ gabbro game Outer Wilds
+```
+
+### Help command
+
+Display all available commands :
+```bash
+❯ gabbro help
+```
+
+Get help of a specific command :
+```bash
+❯ gabbro [command] --help
 ```
 
 ## Contributing
