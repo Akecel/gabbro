@@ -22,9 +22,10 @@ jobs:
 
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: "https://uploads.github.com/repos/{owner}/{repo}/releases/{release_id}/assets{?name,label}"
           asset_path: ./gabbro
           asset_name: gabbro
-          token: ${{ secrets.GITHUB_TOKEN }}
           asset_content_type: application/octet-stream
