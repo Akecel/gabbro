@@ -12,6 +12,22 @@ func TestCamelCaseToNormal(t *testing.T) {
 	result := utils.CamelCaseToNormal(str)
 
 	if result != expected {
-		t.Errorf("Result len=%s; Expected=%s", result, expected)
+		t.Errorf("CamelCaseToNormal(%s) = %s; expected %s", str, result, expected)
+	}
+
+	str = "helloWorld"
+	expected = "hello world"
+	result = utils.CamelCaseToNormal(str)
+
+	if result != expected {
+		t.Errorf("CamelCaseToNormal(%s) = %s; expected %s", str, result, expected)
+	}
+
+	str = "already normal text"
+	expected = "already normal text"
+	result = utils.CamelCaseToNormal(str)
+
+	if result != expected {
+		t.Errorf("CamelCaseToNormal(%s) = %s; expected %s", str, result, expected)
 	}
 }
