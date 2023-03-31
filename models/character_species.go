@@ -19,7 +19,7 @@ func (e CharacterSpecies) String() string {
 	case Animal:
 		return "Animal"
 	case Android:
-		return "v"
+		return "Android"
 	case Unknown:
 		return "Unknown"
 	default:
