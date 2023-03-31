@@ -20,8 +20,10 @@ Gabbro is a simple CLI written in Go allowing a simplified interaction with the 
 
 ### Features
 
-- Get several informations of a game by searching by it name :
+- Get several informations about a game by searching by it name :
   - Name, Description, Companies, Genres, Themes, DLCs, Rating, etc.
+- Get several informations about a character by searching by it name :
+  - Name, Description, Games, Genre, Species, etc.
 
 >For the moment, Gabbro works only on **MacOs**, binaries compatible with other platforms will arrive soon!
 
@@ -71,6 +73,7 @@ Usage:
 
 Available Commands:
   game        Get game informations
+  character   Get character informations
   help        Help about any command
 
 Flags:
@@ -85,9 +88,14 @@ You are now ready to go ! 🚀
 
 ### Game command
 
-Use the game command to get several informations about a specific game :
+Use the `game` command to get several informations about a specific game :
 ```bash
 ❯ gabbro game Outer Wilds
+```
+
+Use the `character` command to get several informations about a specific character :
+```bash
+❯ gabbro character Mario
 ```
 
 ### Help command

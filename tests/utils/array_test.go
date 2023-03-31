@@ -1,8 +1,8 @@
 package tests
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 
 	"github.com/akecel/gabbro/utils"
 )

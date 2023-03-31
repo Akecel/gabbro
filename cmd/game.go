@@ -13,7 +13,7 @@ import (
 var GameCmd = &cobra.Command{
 	Use:   "game",
 	Short: "Get game informations",
-	Long:  `Get several informations about a game by using it name for searching in IGDB database.`,
+	Long:  "Get several informations about a game by using it name for searching in IGDB database.",
 	Run:   GetGame,
 }
 
@@ -24,8 +24,8 @@ func init() {
 func GetGame(cmd *cobra.Command, args []string) {
 	game := data.GetGamesDataByName(strings.Join(args, " "), 1)[0]
 	gameInvolvedCompanies := data.GetInvolvedCompaniesDataByIDs(game.InvolvedCompanies, len(game.InvolvedCompanies))
-	gameCover := data.GetCoverDataByIDs(game.Cover, 1)
-	gameCoverURL := utils.ReconstructCoverURL(gameCover.URL)
+	gameCover := data.GetCoversDataByIDs(game.Cover, 1)
+	gameCoverURL := utils.ReconstructImgURL(gameCover.URL)
 
 	var companies []string
 	for i := 0; i < len(gameInvolvedCompanies); i++ {

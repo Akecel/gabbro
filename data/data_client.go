@@ -9,11 +9,11 @@ import (
 )
 
 var (
-	client = config.InitClient()
+	Client = config.InitClient()
 )
 
 func GetGamesDataByName(name string, limit int) []*igdb.Game {
-	games, err := client.Games.Search(
+	games, err := Client.Games.Search(
 		name,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
@@ -27,7 +27,7 @@ func GetGamesDataByName(name string, limit int) []*igdb.Game {
 }
 
 func GetGamesDataByIDs(ids []int, limit int) []*igdb.Game {
-	games, err := client.Games.List(
+	games, err := Client.Games.List(
 		ids,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
@@ -40,8 +40,22 @@ func GetGamesDataByIDs(ids []int, limit int) []*igdb.Game {
 	return games
 }
 
+func GetCharacterDataByName(name string, limit int) []*igdb.Character {
+	characters, err := Client.Characters.Search(
+		name,
+		igdb.SetFields("*"),
+		igdb.SetLimit(limit),
+	)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return characters
+}
+
 func GetGenresDataByIDs(ids []int, limit int) []*igdb.Genre {
-	genres, err := client.Genres.List(
+	genres, err := Client.Genres.List(
 		ids,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
@@ -55,7 +69,7 @@ func GetGenresDataByIDs(ids []int, limit int) []*igdb.Genre {
 }
 
 func GetThemesDataByIDs(ids []int, limit int) []*igdb.Theme {
-	themes, err := client.Themes.List(
+	themes, err := Client.Themes.List(
 		ids,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
@@ -69,7 +83,7 @@ func GetThemesDataByIDs(ids []int, limit int) []*igdb.Theme {
 }
 
 func GetPlatformsDataByIDs(ids []int, limit int) []*igdb.Platform {
-	platforms, err := client.Platforms.List(
+	platforms, err := Client.Platforms.List(
 		ids,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
@@ -83,7 +97,7 @@ func GetPlatformsDataByIDs(ids []int, limit int) []*igdb.Platform {
 }
 
 func GetInvolvedCompaniesDataByIDs(ids []int, limit int) []*igdb.InvolvedCompany {
-	involvedCompanies, err := client.InvolvedCompanies.List(
+	involvedCompanies, err := Client.InvolvedCompanies.List(
 		ids,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
@@ -97,7 +111,7 @@ func GetInvolvedCompaniesDataByIDs(ids []int, limit int) []*igdb.InvolvedCompany
 }
 
 func GetCompaniesDataByID(id int, limit int) *igdb.Company {
-	involvedCompanies, err := client.Companies.Get(
+	involvedCompanies, err := Client.Companies.Get(
 		id,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
@@ -110,8 +124,8 @@ func GetCompaniesDataByID(id int, limit int) *igdb.Company {
 	return involvedCompanies
 }
 
-func GetCoverDataByIDs(id int, limit int) *igdb.Cover {
-	cover, err := client.Covers.Get(
+func GetCoversDataByIDs(id int, limit int) *igdb.Cover {
+	covers, err := Client.Covers.Get(
 		id,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
@@ -121,5 +135,19 @@ func GetCoverDataByIDs(id int, limit int) *igdb.Cover {
 		log.Fatal(err)
 	}
 
-	return cover
+	return covers
+}
+
+func GetMugShotsDataByIDs(id int, limit int) *igdb.CharacterMugshot {
+	Mugshots, err := Client.CharacterMugshots.Get(
+		id,
+		igdb.SetFields("*"),
+		igdb.SetLimit(limit),
+	)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return Mugshots
 }
