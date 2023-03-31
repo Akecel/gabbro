@@ -79,7 +79,7 @@ func GetGame(cmd *cobra.Command, args []string) {
 		Platforms:   utils.JoinAndRemoveDuplicateStr(platforms),
 		ReleaseDate: utils.ParseTimeStampToString(game.FirstReleaseDate),
 		URL:         game.URL,
-		Rating:      game.Rating,
+		Rating:      utils.ReadableFloatNb(game.Rating),
 	}
 
 	responses.PrintImageResponse(gameCoverURL)

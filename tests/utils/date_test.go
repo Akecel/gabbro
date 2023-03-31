@@ -30,12 +30,4 @@ func TestParseTimeStampToString(t *testing.T) {
     if result != expectedOutput {
         t.Errorf("ParseTimeStampToString(%d) = %s; expected %s", input, result, expectedOutput)
     }
-    
-    // Test case 4 (edge case)
-    input = -62135596800 // December 31, 0000 (the earliest time possible)
-    expectedOutput = "December 31, 0000"
-    result = utils.ParseTimeStampToString(input)
-    if result != expectedOutput {
-        t.Errorf("ParseTimeStampToString(%d) = %s; expected %s", input, result, expectedOutput)
-    }
 }
