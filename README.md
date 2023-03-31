@@ -93,6 +93,8 @@ Use the `game` command to get several informations about a specific game :
 ❯ gabbro game Outer Wilds
 ```
 
+### Character command
+
 Use the `character` command to get several informations about a specific character :
 ```bash
 ❯ gabbro character Mario
