@@ -1,8 +1,8 @@
 package tests
 
 import (
-	"testing"
 	"github.com/akecel/gabbro/models"
+	"testing"
 )
 
 func TestCharacterSpecies_String(t *testing.T) {

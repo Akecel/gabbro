@@ -14,6 +14,7 @@ var GameCmd = &cobra.Command{
 	Use:   "game",
 	Short: "Get game informations",
 	Long:  "Get several informations about a game by using it name for searching in IGDB database.",
+	Args:  cobra.MinimumNArgs(1),
 	Run:   GetGame,
 }
 

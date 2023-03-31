@@ -15,6 +15,7 @@ var CharacterCmd = &cobra.Command{
 	Use:   "character",
 	Short: "Get character informations",
 	Long:  "Get several informations about a game character by using it name for searching in IGDB database.",
+	Args:  cobra.MinimumNArgs(1),
 	Run:   GetCharacter,
 }
 

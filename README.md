@@ -90,14 +90,14 @@ You are now ready to go ! 🚀
 
 Use the `game` command to get several informations about a specific game :
 ```bash
-❯ gabbro game Outer Wilds
+❯ gabbro game [Game Name]
 ```
 
 ### Character command
 
 Use the `character` command to get several informations about a specific character :
 ```bash
-❯ gabbro character Mario
+❯ gabbro character [Character Name]
 ```
 
 ### Help command
