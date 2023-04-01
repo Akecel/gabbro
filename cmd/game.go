@@ -13,7 +13,7 @@ import (
 var GameCmd = &cobra.Command{
 	Use:   "game [Game name]",
 	Short: "Get game informations",
-	Long:  "Get several informations about a game by using it name for searching in IGDB database.",
+	Long:  "Get informations about a game by using it name for searching in IGDB database.",
 	Args:  cobra.MinimumNArgs(1),
 	Run:   GetGame,
 }

@@ -14,7 +14,7 @@ import (
 var CompaniesCmd = &cobra.Command{
 	Use:   "companies [Game name]",
 	Short: "Get information about the companies involved in a game",
-	Long:  "Get several informations about companies involved in a game by using it name for searching in IGDB database.",
+	Long:  "Get informations about companies involved in a game by using it name for searching in IGDB database.",
 	Args:  cobra.MinimumNArgs(1),
 	Run:   GetCompanies,
 }
