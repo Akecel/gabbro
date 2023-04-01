@@ -27,9 +27,15 @@ func PrintImageResponse(url string) {
 	}
 	imageReader := bytes.NewReader(imageData)
 
+	fmt.Println("")
 	if err := imgcat.Cat(imageReader, os.Stdout); err != nil {
 		panic(err)
 	}
+}
+
+func PrintHeader(header string) {
+	title := utils.SetColor()
+	fmt.Println("\n" + title(header) + ":")
 }
 
 func PrintResponse(s interface{}) {
@@ -38,6 +44,7 @@ func PrintResponse(s interface{}) {
 	v := reflect.ValueOf(s)
 	t := reflect.TypeOf(s)
 
+	fmt.Println("")
 	for i := 0; i < t.NumField(); i++ {
 		field := t.Field(i).Name
 		value := v.Field(i).Interface()
@@ -46,4 +53,5 @@ func PrintResponse(s interface{}) {
 			fmt.Printf(title("%s:")+" %v\n", utils.CamelCaseToNormal(field), value)
 		}
 	}
+	fmt.Println("")
 }

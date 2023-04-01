@@ -78,7 +78,7 @@ func GetGame(cmd *cobra.Command, args []string) {
 		DLCs:        utils.JoinAndRemoveDuplicateStr(dlcs),
 		Companies:   utils.JoinAndRemoveDuplicateStr(companies),
 		Platforms:   utils.JoinAndRemoveDuplicateStr(platforms),
-		ReleaseDate: utils.ParseTimeStampToString(game.FirstReleaseDate),
+		ReleaseDate: utils.ParseTimeStampToString(game.FirstReleaseDate, false),
 		URL:         game.URL,
 		Rating:      utils.ReadableFloatNb(game.Rating),
 	}

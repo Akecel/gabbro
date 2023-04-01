@@ -151,3 +151,17 @@ func GetMugShotsDataByIDs(id int, limit int) *igdb.CharacterMugshot {
 
 	return Mugshots
 }
+
+func GetLogosDataByIDs(id int, limit int) *igdb.CompanyLogo {
+	logos, err := Client.CompanyLogos.Get(
+		id,
+		igdb.SetFields("*"),
+		igdb.SetLimit(limit),
+	)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return logos
+}

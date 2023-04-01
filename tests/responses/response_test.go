@@ -50,9 +50,38 @@ func TestPrintResponse(t *testing.T) {
 		Foo: "Hello",
 		Bar: 123,
 	}
-	expectedOutput := "Foo: Hello\nBar: 123\n"
+	expectedOutput := "\nFoo: Hello\nBar: 123\n\n"
 
 	responses.PrintResponse(testStruct)
+
+	w.Close()
+	os.Stdout = origStdout
+
+	outputBytes, err := ioutil.ReadAll(r)
+	if err != nil {
+		t.Fatal(err)
+	}
+	outputStr := string(outputBytes)
+
+	if outputStr != expectedOutput {
+		t.Errorf("PrintResponse() = %q, expected %q", outputStr, expectedOutput)
+	}
+}
+
+func TestPrintHeader(t *testing.T) {
+	r, w, err := os.Pipe()
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer r.Close()
+	defer w.Close()
+
+	origStdout := os.Stdout
+	os.Stdout = w
+
+	input := "Test"
+	expectedOutput := "\nTest:\n"
+	responses.PrintHeader(input)
 
 	w.Close()
 	os.Stdout = origStdout
