@@ -60,6 +60,8 @@ func GetInvolvedCompaniesRole(company *igdb.InvolvedCompany) string {
 		role = "Porting"
 	} else if isSupporting {
 		role = "Supporting"
+	} else {
+		role = "Unknown"
 	}
 
 	return role
