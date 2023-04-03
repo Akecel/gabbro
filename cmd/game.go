@@ -23,21 +23,29 @@ func init() {
 }
 
 func GetGame(cmd *cobra.Command, args []string) {
-	game := data.GetGamesDataByName(strings.Join(args, " "), 1)[0]
-	gameInvolvedCompanies := data.GetInvolvedCompaniesDataByIDs(game.InvolvedCompanies, len(game.InvolvedCompanies))
-	gameCover := data.GetCoversDataByIDs(game.Cover, 1)
-	gameCoverURL := utils.ReconstructImgURL(gameCover.URL)
+	gamesList, err := data.GetGamesDataByName(strings.Join(args, " "), 1); if err != nil {
+		responses.PrintErrorResponse("Game not found")
+	}
+
+	game := gamesList[0]
+
+	var gameCoverURL string
+	gameCover, err := data.GetCoversDataByID(game.Cover); if err == nil {
+		gameCoverURL = utils.ReconstructImgURL(gameCover.URL)
+	}
+	
+	gameInvolvedCompanies, _ := data.GetInvolvedCompaniesDataByIDs(game.InvolvedCompanies, len(game.InvolvedCompanies))
 
 	var companies []string
 	for i := 0; i < len(gameInvolvedCompanies); i++ {
-		company := data.GetCompaniesDataByID(gameInvolvedCompanies[i].Company, 1)
+		company, _ := data.GetCompaniesDataByID(gameInvolvedCompanies[i].Company)
 		companies = append(companies, company.Name)
 	}
 
 	var dlcs []string
 	gameHaveDLCs := len(game.DLCS) > 0
 	if gameHaveDLCs {
-		gameDLCs := data.GetGamesDataByIDs(game.DLCS, len(game.DLCS))
+		gameDLCs, _ := data.GetGamesDataByIDs(game.DLCS, len(game.DLCS))
 		for i := 0; i < len(gameDLCs); i++ {
 			dlcs = append(dlcs, gameDLCs[i].Name)
 		}
@@ -46,7 +54,7 @@ func GetGame(cmd *cobra.Command, args []string) {
 	var genres []string
 	gameHaveGenres := len(game.Genres) > 0
 	if gameHaveGenres {
-		gameGenres := data.GetGenresDataByIDs(game.Genres, len(game.Genres))
+		gameGenres, _ := data.GetGenresDataByIDs(game.Genres, len(game.Genres))
 		for i := 0; i < len(gameGenres); i++ {
 			genres = append(genres, gameGenres[i].Name)
 		}
@@ -55,7 +63,7 @@ func GetGame(cmd *cobra.Command, args []string) {
 	var themes []string
 	gameHaveThemes := len(game.Themes) > 0
 	if gameHaveThemes {
-		gameThemes := data.GetThemesDataByIDs(game.Themes, len(game.Themes))
+		gameThemes, _ := data.GetThemesDataByIDs(game.Themes, len(game.Themes))
 		for i := 0; i < len(gameThemes); i++ {
 			themes = append(themes, gameThemes[i].Name)
 		}
@@ -64,7 +72,7 @@ func GetGame(cmd *cobra.Command, args []string) {
 	var platforms []string
 	gameHavePlatforms := len(game.Platforms) > 0
 	if gameHavePlatforms {
-		gamePlatfroms := data.GetPlatformsDataByIDs(game.Platforms, len(game.Platforms))
+		gamePlatfroms, _ := data.GetPlatformsDataByIDs(game.Platforms, len(game.Platforms))
 		for i := 0; i < len(gamePlatfroms); i++ {
 			platforms = append(platforms, gamePlatfroms[i].Name)
 		}
@@ -83,6 +91,9 @@ func GetGame(cmd *cobra.Command, args []string) {
 		Rating:      utils.ReadableFloatNb(game.Rating),
 	}
 
-	responses.PrintImageResponse(gameCoverURL)
+	if len(gameCoverURL) > 0 {
+		responses.PrintImageResponse(gameCoverURL)
+	}
+	
 	responses.PrintResponse(response)
 }

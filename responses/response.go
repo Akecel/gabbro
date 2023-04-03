@@ -55,3 +55,8 @@ func PrintResponse(s interface{}) {
 	}
 	fmt.Println("")
 }
+
+func PrintErrorResponse(message string) {
+	fmt.Println(message)
+	os.Exit(0)
+}

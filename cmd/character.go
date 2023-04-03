@@ -24,14 +24,21 @@ func init() {
 }
 
 func GetCharacter(cmd *cobra.Command, args []string) {
-	character := data.GetCharacterDataByName(strings.Join(args, " "), 1)[0]
-	characterMugShot := data.GetMugShotsDataByIDs(character.MugShot, 1)
-	characterMugShotURL := utils.ReconstructImgURL(characterMugShot.URL)
+	charactersList, err := data.GetCharacterDataByName(strings.Join(args, " "), 1); if err != nil {
+		responses.PrintErrorResponse("Character not found")
+	}
+
+	character := charactersList[0]
+
+	var characterMugShotURL string
+	characterMugShot, err := data.GetMugShotsDataByID(character.MugShot); if err == nil {
+		characterMugShotURL = utils.ReconstructImgURL(characterMugShot.URL)
+	}
 
 	var games []string
 	characterHaveGame := len(character.Games) > 0
 	if characterHaveGame {
-		characterGames := data.GetGamesDataByIDs(character.Games, len(character.Games))
+		characterGames, _ := data.GetGamesDataByIDs(character.Games, len(character.Games))
 		for i := 0; i < len(characterGames); i++ {
 			games = append(games, characterGames[i].Name)
 		}
@@ -48,6 +55,9 @@ func GetCharacter(cmd *cobra.Command, args []string) {
 		URL:         character.URL,
 	}
 
-	responses.PrintImageResponse(characterMugShotURL)
+	if len(characterMugShotURL) > 0 {
+		responses.PrintImageResponse(characterMugShotURL)
+	}
+	
 	responses.PrintResponse(response)
 }

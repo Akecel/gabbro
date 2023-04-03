@@ -1,8 +1,6 @@
 package data
 
 import (
-	"log"
-
 	"github.com/akecel/gabbro/config"
 
 	"github.com/Henry-Sarabia/igdb/v2"
@@ -12,156 +10,108 @@ var (
 	Client = config.InitClient()
 )
 
-func GetGamesDataByName(name string, limit int) []*igdb.Game {
+func GetGamesDataByName(name string, limit int) ([]*igdb.Game, error) {
 	games, err := Client.Games.Search(
 		name,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
 	)
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return games
+	return games, err
 }
 
-func GetGamesDataByIDs(ids []int, limit int) []*igdb.Game {
+func GetGamesDataByIDs(ids []int, limit int) ([]*igdb.Game, error) {
 	games, err := Client.Games.List(
 		ids,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
 	)
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return games
+	return games, err
 }
 
-func GetCharacterDataByName(name string, limit int) []*igdb.Character {
+func GetCharacterDataByName(name string, limit int) ([]*igdb.Character, error) {
 	characters, err := Client.Characters.Search(
 		name,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
 	)
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return characters
+	return characters, err
 }
 
-func GetGenresDataByIDs(ids []int, limit int) []*igdb.Genre {
+func GetGenresDataByIDs(ids []int, limit int) ([]*igdb.Genre, error) {
 	genres, err := Client.Genres.List(
 		ids,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
 	)
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return genres
+	return genres, err
 }
 
-func GetThemesDataByIDs(ids []int, limit int) []*igdb.Theme {
+func GetThemesDataByIDs(ids []int, limit int) ([]*igdb.Theme, error) {
 	themes, err := Client.Themes.List(
 		ids,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
 	)
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return themes
+	return themes, err
 }
 
-func GetPlatformsDataByIDs(ids []int, limit int) []*igdb.Platform {
+func GetPlatformsDataByIDs(ids []int, limit int) ([]*igdb.Platform, error) {
 	platforms, err := Client.Platforms.List(
 		ids,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
 	)
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return platforms
+	return platforms, err
 }
 
-func GetInvolvedCompaniesDataByIDs(ids []int, limit int) []*igdb.InvolvedCompany {
+func GetInvolvedCompaniesDataByIDs(ids []int, limit int) ([]*igdb.InvolvedCompany, error) {
 	involvedCompanies, err := Client.InvolvedCompanies.List(
 		ids,
 		igdb.SetFields("*"),
 		igdb.SetLimit(limit),
 	)
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return involvedCompanies
+	return involvedCompanies, err
 }
 
-func GetCompaniesDataByID(id int, limit int) *igdb.Company {
+func GetCompaniesDataByID(id int) (*igdb.Company, error) {
 	involvedCompanies, err := Client.Companies.Get(
 		id,
 		igdb.SetFields("*"),
-		igdb.SetLimit(limit),
 	)
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return involvedCompanies
+	return involvedCompanies, err
 }
 
-func GetCoversDataByIDs(id int, limit int) *igdb.Cover {
+func GetCoversDataByID(id int) (*igdb.Cover, error) {
 	covers, err := Client.Covers.Get(
 		id,
 		igdb.SetFields("*"),
-		igdb.SetLimit(limit),
 	)
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return covers
+	return covers, err
 }
 
-func GetMugShotsDataByIDs(id int, limit int) *igdb.CharacterMugshot {
-	Mugshots, err := Client.CharacterMugshots.Get(
+func GetMugShotsDataByID(id int) (*igdb.CharacterMugshot, error) {
+	mugshots, err := Client.CharacterMugshots.Get(
 		id,
 		igdb.SetFields("*"),
-		igdb.SetLimit(limit),
 	)
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return Mugshots
+	return mugshots, err
 }
 
-func GetLogosDataByIDs(id int, limit int) *igdb.CompanyLogo {
+func GetLogosDataByID(id int) (*igdb.CompanyLogo, error) {
 	logos, err := Client.CompanyLogos.Get(
 		id,
 		igdb.SetFields("*"),
-		igdb.SetLimit(limit),
 	)
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return logos
+	return logos, err
 }

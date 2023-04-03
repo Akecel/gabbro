@@ -24,14 +24,24 @@ func init() {
 }
 
 func GetCompanies(cmd *cobra.Command, args []string) {
-	game := data.GetGamesDataByName(strings.Join(args, " "), 1)[0]
-	gameInvolvedCompanies := data.GetInvolvedCompaniesDataByIDs(game.InvolvedCompanies, len(game.InvolvedCompanies))
+	gamesList, err := data.GetGamesDataByName(strings.Join(args, " "), 1); if err != nil {
+		responses.PrintErrorResponse("Game not found")
+	}
+
+	game := gamesList[0]
+
+	gameInvolvedCompanies, err := data.GetInvolvedCompaniesDataByIDs(game.InvolvedCompanies, len(game.InvolvedCompanies)); if err != nil {
+		responses.PrintErrorResponse("No companies found for this game")
+	}
 
 	for i := 0; i < len(gameInvolvedCompanies); i++ {
-		company := data.GetCompaniesDataByID(gameInvolvedCompanies[i].Company, 1)
-		companyLogo := data.GetLogosDataByIDs(company.Logo, 1)
-		companyLogoURL := utils.ReconstructImgURL(companyLogo.URL)
+		company, _ := data.GetCompaniesDataByID(gameInvolvedCompanies[i].Company)
 
+		var companyLogoURL string
+		companyLogo, err := data.GetLogosDataByID(company.Logo); if err == nil {
+			companyLogoURL = utils.ReconstructImgURL(companyLogo.URL)
+		}
+		
 		response := responses.CompanyResponse{
 			Name:           company.Name,
 			Description:    company.Description,
@@ -40,7 +50,11 @@ func GetCompanies(cmd *cobra.Command, args []string) {
 		}
 
 		responses.PrintHeader(GetInvolvedCompaniesRole(gameInvolvedCompanies[i]))
-		responses.PrintImageResponse(companyLogoURL)
+
+		if len(companyLogoURL) > 0 {
+			responses.PrintImageResponse(companyLogoURL)
+		}
+		
 		responses.PrintResponse(response)
 	}
 }
@@ -66,4 +80,3 @@ func GetInvolvedCompaniesRole(company *igdb.InvolvedCompany) string {
 
 	return role
 }
-
