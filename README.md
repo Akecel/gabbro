@@ -68,8 +68,6 @@ You can verify that the CLI is properly installed and configured by using this c
 ```bash
 ❯ gabbro
 
-Gabbro is a simple CLI written in Go allowing interaction with the IGDB API. It is possible to search for information about specific video game and many other things.
-
 Usage:
   gabbro [command]
 

@@ -8,7 +8,13 @@ var (
 	RootCmd = &cobra.Command{
 		Use:   "gabbro",
 		Short: "Simple CLI to interact with IGDB API",
-		Long:  `Gabbro is a simple CLI written in Go allowing interaction with the IGDB API. It is possible to search for information about specific video game and many other things.`,
+		Long:  `
+	 _____       _     _               
+	|  __ \     | |   | |              
+	| |  \/ __ _| |__ | |__  _ __ ___  
+	| | __ / _' | '_ \| '_ \| '__/ _ \ 
+	| |_\ \ (_| | |_) | |_) | | | (_) |
+	\_____/\__,_|_.__/|_.__/|_|  \___/`,
 	}
 )
 
