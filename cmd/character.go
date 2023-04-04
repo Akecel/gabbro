@@ -30,17 +30,19 @@ func GetCharacter(cmd *cobra.Command, args []string) {
 
 	character := charactersList[0]
 
-	var characterMugShotURL string
-	characterMugShot, err := data.GetMugShotsDataByID(character.MugShot); if err == nil {
-		characterMugShotURL = utils.ReconstructImgURL(characterMugShot.URL)
-	}
-
 	var games []string
 	characterHaveGame := len(character.Games) > 0
 	if characterHaveGame {
 		characterGames, _ := data.GetGamesDataByIDs(character.Games, len(character.Games))
 		for i := 0; i < len(characterGames); i++ {
 			games = append(games, characterGames[i].Name)
+		}
+	}
+
+	var characterMugShotURL string
+	if WithImage {
+		characterMugShot, err := data.GetMugShotsDataByID(character.MugShot); if err == nil {
+			characterMugShotURL = utils.ReconstructImgURL(characterMugShot.URL)
 		}
 	}
 

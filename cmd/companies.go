@@ -38,8 +38,10 @@ func GetCompanies(cmd *cobra.Command, args []string) {
 		company, _ := data.GetCompaniesDataByID(gameInvolvedCompanies[i].Company)
 
 		var companyLogoURL string
-		companyLogo, err := data.GetLogosDataByID(company.Logo); if err == nil {
-			companyLogoURL = utils.ReconstructImgURL(companyLogo.URL)
+		if WithImage {
+			companyLogo, err := data.GetLogosDataByID(company.Logo); if err == nil {
+				companyLogoURL = utils.ReconstructImgURL(companyLogo.URL)
+			}
 		}
 		
 		response := responses.CompanyResponse{

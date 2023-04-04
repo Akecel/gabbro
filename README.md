@@ -76,10 +76,12 @@ Usage:
 Available Commands:
   game        Get game informations
   character   Get character informations
+  companies   Get information about the companies involved in a game
   help        Help about any command
 
 Flags:
   -h, --help   help for gabbro
+  -i, --image  print covers, logos and mugshots in terminal
 
 Use "gabbro [command] --help" for more information about a command.
 ```
@@ -92,21 +94,39 @@ You are now ready to go ! 🚀
 
 Use the `game` command to get informations about a specific game :
 ```bash
-❯ gabbro game [Game Name]
+❯ gabbro game [Game Name] [flags]
+```
+
+```bash
+Flags:
+  -h, --help    help for game
+  -i, --image   print covers in terminal
 ```
 
 ### Character command
 
 Use the `character` command to get informations about a specific character :
 ```bash
-❯ gabbro character [Character Name]
+❯ gabbro character [Character Name] [flags]
+```
+
+```bash
+Flags:
+  -h, --help    help for character
+  -i, --image   print mugshot in terminal
 ```
 
 ### Companies command
 
 Use the `companies` command to get informations about companies involved in a game :
 ```bash
-❯ gabbro companies [Game Name]
+❯ gabbro companies [Game Name] [flags]
+```
+
+```bash
+Flags:
+  -h, --help    help for companies
+  -i, --image   print logos in terminal
 ```
 
 ### Help command
@@ -120,6 +140,11 @@ Get help of a specific command :
 ```bash
 ❯ gabbro [command] --help
 ```
+
+## Troubleshooting
+
+- Images, being directly imported from IGDB can be badly displayed as for example being black on black background and thus being invisible in the terminal (especially for logos)
+- Commands requiring several chained call api (`game`, `companies`) may take a few seconds to run
 
 ## Contributing
 

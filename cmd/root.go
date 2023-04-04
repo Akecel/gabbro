@@ -12,6 +12,12 @@ var (
 	}
 )
 
+var WithImage bool
+
 func Execute() error {
 	return RootCmd.Execute()
+}
+
+func init() {
+	RootCmd.PersistentFlags().BoolVarP(&WithImage, "image", "i", false, "print covers, logos and mugshots in terminal")
 }

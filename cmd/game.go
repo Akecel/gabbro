@@ -29,11 +29,6 @@ func GetGame(cmd *cobra.Command, args []string) {
 
 	game := gamesList[0]
 
-	var gameCoverURL string
-	gameCover, err := data.GetCoversDataByID(game.Cover); if err == nil {
-		gameCoverURL = utils.ReconstructImgURL(gameCover.URL)
-	}
-	
 	gameInvolvedCompanies, _ := data.GetInvolvedCompaniesDataByIDs(game.InvolvedCompanies, len(game.InvolvedCompanies))
 
 	var companies []string
@@ -75,6 +70,13 @@ func GetGame(cmd *cobra.Command, args []string) {
 		gamePlatfroms, _ := data.GetPlatformsDataByIDs(game.Platforms, len(game.Platforms))
 		for i := 0; i < len(gamePlatfroms); i++ {
 			platforms = append(platforms, gamePlatfroms[i].Name)
+		}
+	}
+
+	var gameCoverURL string
+	if WithImage {
+		gameCover, err := data.GetCoversDataByID(game.Cover); if err == nil {
+			gameCoverURL = utils.ReconstructImgURL(gameCover.URL)
 		}
 	}
 
