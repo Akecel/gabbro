@@ -24,7 +24,8 @@ func init() {
 }
 
 func GetCharacter(cmd *cobra.Command, args []string) {
-	charactersList, err := data.GetCharacterDataByName(strings.Join(args, " "), 1); if err != nil {
+	charactersList, err := data.GetCharacterDataByName(strings.Join(args, " "), 1)
+	if err != nil {
 		responses.PrintErrorResponse("Character not found")
 	}
 
@@ -41,7 +42,8 @@ func GetCharacter(cmd *cobra.Command, args []string) {
 
 	var characterMugShotURL string
 	if WithImage {
-		characterMugShot, err := data.GetMugShotsDataByID(character.MugShot); if err == nil {
+		characterMugShot, err := data.GetMugShotsDataByID(character.MugShot)
+		if err == nil {
 			characterMugShotURL = utils.ReconstructImgURL(characterMugShot.URL)
 		}
 	}
@@ -60,6 +62,6 @@ func GetCharacter(cmd *cobra.Command, args []string) {
 	if len(characterMugShotURL) > 0 {
 		responses.PrintImageResponse(characterMugShotURL)
 	}
-	
+
 	responses.PrintResponse(response)
 }

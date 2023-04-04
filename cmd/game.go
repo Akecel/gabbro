@@ -23,7 +23,8 @@ func init() {
 }
 
 func GetGame(cmd *cobra.Command, args []string) {
-	gamesList, err := data.GetGamesDataByName(strings.Join(args, " "), 1); if err != nil {
+	gamesList, err := data.GetGamesDataByName(strings.Join(args, " "), 1)
+	if err != nil {
 		responses.PrintErrorResponse("Game not found")
 	}
 
@@ -75,7 +76,8 @@ func GetGame(cmd *cobra.Command, args []string) {
 
 	var gameCoverURL string
 	if WithImage {
-		gameCover, err := data.GetCoversDataByID(game.Cover); if err == nil {
+		gameCover, err := data.GetCoversDataByID(game.Cover)
+		if err == nil {
 			gameCoverURL = utils.ReconstructImgURL(gameCover.URL)
 		}
 	}
@@ -96,6 +98,6 @@ func GetGame(cmd *cobra.Command, args []string) {
 	if len(gameCoverURL) > 0 {
 		responses.PrintImageResponse(gameCoverURL)
 	}
-	
+
 	responses.PrintResponse(response)
 }

@@ -58,9 +58,9 @@ func PrintResponse(s interface{}) {
 
 func PrintErrorResponse(message string, exit ...bool) {
 	var haveToExit bool = true
-    if len(exit) > 0 {
-        haveToExit = exit[0]
-    }
+	if len(exit) > 0 {
+		haveToExit = exit[0]
+	}
 
 	fmt.Println("\n" + message)
 

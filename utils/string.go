@@ -24,7 +24,7 @@ func CamelCaseToNormal(str string) string {
 
 func ContainsI(strA string, strB string) bool {
 	return strings.Contains(
-		strings.ToLower(strA), 
+		strings.ToLower(strA),
 		strings.ToLower(strB),
 	)
 }

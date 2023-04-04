@@ -29,18 +29,21 @@ func init() {
 
 func GetCompanies(cmd *cobra.Command, args []string) {
 	if len(OnlyRole) > 0 {
-		v, err := ValidateFlag(OnlyRole); if err != nil {
+		v, err := ValidateFlag(OnlyRole)
+		if err != nil {
 			responses.PrintErrorResponse("Bad option '" + v + "' for --only flag [developer, publisher, porting, support]")
 		}
 	}
 
-	gamesList, err := data.GetGamesDataByName(strings.Join(args, " "), 1); if err != nil {
+	gamesList, err := data.GetGamesDataByName(strings.Join(args, " "), 1)
+	if err != nil {
 		responses.PrintErrorResponse("Game not found")
 	}
 
 	game := gamesList[0]
 
-	gameInvolvedCompanies, err := data.GetInvolvedCompaniesDataByIDs(game.InvolvedCompanies, len(game.InvolvedCompanies)); if err != nil {
+	gameInvolvedCompanies, err := data.GetInvolvedCompaniesDataByIDs(game.InvolvedCompanies, len(game.InvolvedCompanies))
+	if err != nil {
 		responses.PrintErrorResponse("No companies found for this game")
 	}
 
@@ -56,24 +59,25 @@ func GetCompanies(cmd *cobra.Command, args []string) {
 		if wanted {
 			var companyLogoURL string
 			if WithImage {
-				companyLogo, err := data.GetLogosDataByID(company.Logo); if err == nil {
+				companyLogo, err := data.GetLogosDataByID(company.Logo)
+				if err == nil {
 					companyLogoURL = utils.ReconstructImgURL(companyLogo.URL)
 				}
 			}
-			
+
 			response := responses.CompanyResponse{
 				Name:           company.Name,
 				Description:    company.Description,
 				FoundationDate: utils.ParseTimeStampToString(company.StartDate, true),
 				URL:            company.URL,
 			}
-	
+
 			responses.PrintHeader(companyRole)
-	
+
 			if len(companyLogoURL) > 0 {
 				responses.PrintImageResponse(companyLogoURL)
 			}
-			
+
 			responses.PrintResponse(response)
 		}
 	}
@@ -83,13 +87,13 @@ func ValidateFlag(value string) (string, error) {
 	s := strings.Split(strings.ToLower(value), ",")
 	allowed := []string{"developer", "publisher", "porting", "support"}
 
-    for _, v := range s {
-        if !utils.ArrayContains(allowed, v) {
-            return v, fmt.Errorf("value %s is not authorised", v)
-        }
-    }
+	for _, v := range s {
+		if !utils.ArrayContains(allowed, v) {
+			return v, fmt.Errorf("value %s is not authorised", v)
+		}
+	}
 
-    return "", nil
+	return "", nil
 }
 
 func GetInvolvedCompaniesRole(company *igdb.InvolvedCompany) string {
