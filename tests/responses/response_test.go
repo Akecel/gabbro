@@ -96,3 +96,32 @@ func TestPrintHeader(t *testing.T) {
 		t.Errorf("PrintResponse() = %q, expected %q", outputStr, expectedOutput)
 	}
 }
+
+func TestPrintErrorResponse(t *testing.T) {
+    message := "Error message"
+	r, w, err := os.Pipe()
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer r.Close()
+	defer w.Close()
+
+	origStdout := os.Stdout
+	os.Stdout = w
+
+    responses.PrintErrorResponse(message, false)
+
+	w.Close()
+	os.Stdout = origStdout
+
+	outputBytes, err := ioutil.ReadAll(r)
+	if err != nil {
+		t.Fatal(err)
+	}
+	outputStr := string(outputBytes)
+
+    expectedOutput := "\n" + message + "\n"
+    if outputStr != expectedOutput {
+        t.Errorf("Output was incorrect, got: %s, want: %s.", outputStr, expectedOutput)
+    }
+}

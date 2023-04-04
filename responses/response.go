@@ -56,7 +56,15 @@ func PrintResponse(s interface{}) {
 	fmt.Println("")
 }
 
-func PrintErrorResponse(message string) {
-	fmt.Println(message)
-	os.Exit(0)
+func PrintErrorResponse(message string, exit ...bool) {
+	var haveToExit bool = true
+    if len(exit) > 0 {
+        haveToExit = exit[0]
+    }
+
+	fmt.Println("\n" + message)
+
+	if haveToExit == true {
+		os.Exit(0)
+	}
 }
