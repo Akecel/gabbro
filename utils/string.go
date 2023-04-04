@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"strings"
 	"unicode"
 )
 
@@ -19,4 +20,11 @@ func CamelCaseToNormal(str string) string {
 	}
 
 	return result
+}
+
+func ContainsI(strA string, strB string) bool {
+	return strings.Contains(
+		strings.ToLower(strA), 
+		strings.ToLower(strB),
+	)
 }

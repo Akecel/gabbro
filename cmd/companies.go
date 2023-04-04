@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/akecel/gabbro/data"
@@ -19,11 +20,20 @@ var CompaniesCmd = &cobra.Command{
 	Run:   GetCompanies,
 }
 
+var OnlyRole string
+
 func init() {
 	RootCmd.AddCommand(CompaniesCmd)
+	CompaniesCmd.Flags().StringVarP(&OnlyRole, "only", "o", "", "print only one company based on the role [developer, publisher, porting, support]")
 }
 
 func GetCompanies(cmd *cobra.Command, args []string) {
+	if len(OnlyRole) > 0 {
+		v, err := ValidateFlag(OnlyRole); if err != nil {
+			responses.PrintErrorResponse("Bad option '" + v + "' for --only flag [developer, publisher, porting, support]")
+		}
+	}
+
 	gamesList, err := data.GetGamesDataByName(strings.Join(args, " "), 1); if err != nil {
 		responses.PrintErrorResponse("Game not found")
 	}
@@ -36,29 +46,50 @@ func GetCompanies(cmd *cobra.Command, args []string) {
 
 	for i := 0; i < len(gameInvolvedCompanies); i++ {
 		company, _ := data.GetCompaniesDataByID(gameInvolvedCompanies[i].Company)
+		companyRole := GetInvolvedCompaniesRole(gameInvolvedCompanies[i])
 
-		var companyLogoURL string
-		if WithImage {
-			companyLogo, err := data.GetLogosDataByID(company.Logo); if err == nil {
-				companyLogoURL = utils.ReconstructImgURL(companyLogo.URL)
+		var wanted bool = true
+		if len(OnlyRole) > 0 {
+			wanted = utils.ContainsI(OnlyRole, companyRole)
+		}
+
+		if wanted {
+			var companyLogoURL string
+			if WithImage {
+				companyLogo, err := data.GetLogosDataByID(company.Logo); if err == nil {
+					companyLogoURL = utils.ReconstructImgURL(companyLogo.URL)
+				}
 			}
+			
+			response := responses.CompanyResponse{
+				Name:           company.Name,
+				Description:    company.Description,
+				FoundationDate: utils.ParseTimeStampToString(company.StartDate, true),
+				URL:            company.URL,
+			}
+	
+			responses.PrintHeader(companyRole)
+	
+			if len(companyLogoURL) > 0 {
+				responses.PrintImageResponse(companyLogoURL)
+			}
+			
+			responses.PrintResponse(response)
 		}
-		
-		response := responses.CompanyResponse{
-			Name:           company.Name,
-			Description:    company.Description,
-			FoundationDate: utils.ParseTimeStampToString(company.StartDate, true),
-			URL:            company.URL,
-		}
-
-		responses.PrintHeader(GetInvolvedCompaniesRole(gameInvolvedCompanies[i]))
-
-		if len(companyLogoURL) > 0 {
-			responses.PrintImageResponse(companyLogoURL)
-		}
-		
-		responses.PrintResponse(response)
 	}
+}
+
+func ValidateFlag(value string) (string, error) {
+	s := strings.Split(strings.ToLower(value), ",")
+	allowed := []string{"developer", "publisher", "porting", "support"}
+
+    for _, v := range s {
+        if !utils.ArrayContains(allowed, v) {
+            return v, fmt.Errorf("value %s is not authorised", v)
+        }
+    }
+
+    return "", nil
 }
 
 func GetInvolvedCompaniesRole(company *igdb.InvolvedCompany) string {
@@ -75,7 +106,7 @@ func GetInvolvedCompaniesRole(company *igdb.InvolvedCompany) string {
 	} else if isPorting {
 		role = "Porting"
 	} else if isSupporting {
-		role = "Supporting"
+		role = "Support"
 	} else {
 		role = "Unknown"
 	}
