@@ -127,7 +127,10 @@ Use the `companies` command to get informations about companies involved in a ga
 Flags:
   -h, --help    help for companies
   -i, --image   print logos in terminal
+  -o, --only string   print only one company based on the role [developer, publisher, porting, support]
 ```
+
+> Note that for the --only flag, you can chain the values to get several results, for example: developer,support
 
 ### Help command
 
