@@ -143,8 +143,8 @@ Get help of a specific command :
 
 ## Troubleshooting
 
-- Images, being directly imported from IGDB can be badly displayed as for example being black on black background and thus being invisible in the terminal (especially for logos)
-- Commands requiring several chained call api (`game`, `companies`) may take a few seconds to run
+- Images, being directly imported from IGDB can be badly displayed as for example being black on black background and thus being invisible in the terminal (especially for logos).
+- Commands requiring several chained call api (`game`, `companies`) may take a few seconds to run.
 
 ## Contributing
 
