@@ -52,3 +52,25 @@ func TestRemoveDuplicateStr(t *testing.T) {
 		t.Errorf("Test case 3 failed - expected: %v, got: %v", expectedResult, result)
 	}
 }
+
+func TestArrayContains(t *testing.T) {
+	// Test with an array that contains the element
+	slice := []string{"apple", "banana", "cherry"}
+	result := utils.ArrayContains(slice, "banana")
+	if !result {
+		t.Errorf("Expected ArrayContains(slice, 'banana') to return true, but got false")
+	}
+
+	// Test with an array that does not contain the element
+	result = utils.ArrayContains(slice, "orange")
+	if result {
+		t.Errorf("Expected ArrayContains(slice, 'orange') to return false, but got true")
+	}
+
+	// Test with an empty array
+	emptySlice := []string{}
+	result = utils.ArrayContains(emptySlice, "test")
+	if result {
+		t.Errorf("Expected ArrayContains(emptySlice, 'test') to return false, but got true")
+	}
+}

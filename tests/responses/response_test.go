@@ -98,7 +98,7 @@ func TestPrintHeader(t *testing.T) {
 }
 
 func TestPrintErrorResponse(t *testing.T) {
-    message := "Error message"
+	message := "Error message"
 	r, w, err := os.Pipe()
 	if err != nil {
 		t.Fatal(err)
@@ -109,7 +109,7 @@ func TestPrintErrorResponse(t *testing.T) {
 	origStdout := os.Stdout
 	os.Stdout = w
 
-    responses.PrintErrorResponse(message, false)
+	responses.PrintErrorResponse(message, false)
 
 	w.Close()
 	os.Stdout = origStdout
@@ -120,8 +120,8 @@ func TestPrintErrorResponse(t *testing.T) {
 	}
 	outputStr := string(outputBytes)
 
-    expectedOutput := "\n" + message + "\n"
-    if outputStr != expectedOutput {
-        t.Errorf("Output was incorrect, got: %s, want: %s.", outputStr, expectedOutput)
-    }
+	expectedOutput := "\n" + message + "\n"
+	if outputStr != expectedOutput {
+		t.Errorf("Output was incorrect, got: %s, want: %s.", outputStr, expectedOutput)
+	}
 }
