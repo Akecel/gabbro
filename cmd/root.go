@@ -8,7 +8,7 @@ var (
 	RootCmd = &cobra.Command{
 		Use:   "gabbro",
 		Short: "Simple CLI to interact with IGDB API",
-		Long:  `
+		Long: `
 	 _____       _     _               
 	|  __ \     | |   | |              
 	| |  \/ __ _| |__ | |__  _ __ ___  

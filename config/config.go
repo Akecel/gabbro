@@ -17,7 +17,7 @@ func InitConfig() {
 
 	// Test config path
 	viper.AddConfigPath("../")
-	
+
 	viper.SetConfigName("gabbro")
 	viper.SetConfigType("yaml")
 	viper.AutomaticEnv()
