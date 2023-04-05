@@ -1,5 +1,11 @@
+# Bin
+bin/*
 /main
 /gabbro
+
+# Config
 /gabbro.yaml
+
+# Other
 /covprofile
 *DS_Store

@@ -36,10 +36,15 @@ jobs:
           go-version: 1.19
 
       - name: Build
-        run: go build -o gabbro
+        run: scripts/build.sh github.com/akecel/gabbro
 
-      - name: Upload Release Asset
-        run: gh release upload v${{ steps.tag.outputs.tag }} gabbro
+      - name: Upload Release Assets
+        run: |
+          cd ../bin &&
+          for FILE in *;
+            do
+            gh release upload v${{ steps.tag.outputs.tag }} FILE 
+          done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
