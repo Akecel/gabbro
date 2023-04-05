@@ -45,12 +45,12 @@ go install github.com/akecel/gabbro@latest
 Go will automatically install it in your `$GOPATH/bin` directory which should be in your `$PATH`.
 Now you have to define your configuration file, see [Configuration](#Configuration).
 
-### Download Binary
+### Download as Binary
 
 If Go is not installed on your machine, you can also download Gabbro as a simple binary.
 
 To get started, you need to download the latest published binary of the application, make sure you download 
-the file corresponding to your platform:
+the file corresponding to your platform :
 
 - Linux amd64 : `gabbro-linux-amd64`
 - Linux arm64 : `gabbro-linux-arm64`
@@ -68,29 +68,29 @@ curl https://github.com/Akecel/gabbro/releases/download/latest/gabbro-your-plate
 
 Then, rename this file `gabbro` (or `gabbro.exe` for Windows)
 
-**Unix System (MacOS / Linux):**
+### Unix Systems (MacOS / Linux)
 
-Create a `bin` directory in your `$HOME` if it does not already exist:
+Create a `bin` directory in your `$HOME` if it does not already exist :
 
 ```bash
 mkdir $HOME/bin
 ```
 
-Put the binary in your `$HOME/bin` directory and add `$HOME/bin` to your `$PATH`:
+Put the binary in your `$HOME/bin` directory and add `$HOME/bin` to your `$PATH` :
 
 ```bash
 export PATH="$HOME/bin:$PATH"
 ```
 
-Finally, give the right permissions to the binary:
+Finally, give the right permissions to the binary :
 
 ```bash
 chmod +x bin/gabbro
 ```
 
-**Windows NT:**
+### Windows Systems
 
-Create a `bin` directory in your `$HOME` / `%USERPROFILE%/bin` if it does not already exist:
+Create a `bin` directory in your `$HOME` / `%USERPROFILE%/bin` if it does not already exist :
 
 ```bash
 # CMD
@@ -100,7 +100,8 @@ mkdir %USERPROFILE%/bin
 mkdir $HOME/bin
 ```
 
-Put the `gabbro.exe` in this `bin` directory then:
+Put the `gabbro.exe` in this `bin` directory then :
+
 - *Windows + R* to open the Run command window
 - Run `sysdm.cpl`
 - Go to *Advanced* -> *Environment Variables*
@@ -132,7 +133,7 @@ Now place `gabbro.yaml` in the appropriate directory so that the program can run
 - `$HOME/bin` -> If installed as Go Binary (MacOS & Linux)
 - `%USERPROFILE%/bin` If installed as Go Binary (Windows)
 
-Finaly, you can check that the CLI is properly installed and configured by using this command:
+Finaly, you can check that the CLI is properly installed and configured by using this command :
 
 ```bash
 ❯ gabbro
@@ -197,7 +198,7 @@ Flags:
   -o, --only string   print only one company based on the role [developer, publisher, porting, support]
 ```
 
-> Note that for the --only flag, you can chain the values to get several results, for example: developer,support
+> Note that for the --only flag, you can chain the values to get several results, for example : developer,support
 
 ### Help command
 
