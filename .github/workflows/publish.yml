@@ -43,7 +43,7 @@ jobs:
           cd bin &&
           for FILE in *;
             do
-            gh release upload v${{ steps.tag.outputs.tag }} FILE 
+            gh release upload v${{ steps.tag.outputs.tag }} $FILE 
           done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
