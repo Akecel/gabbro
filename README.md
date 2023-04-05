@@ -18,6 +18,12 @@
 
 Gabbro is a simple CLI written in Go allowing a simplified interaction with the **IGDB API**.
 
+### Supported plateforms
+
+- Linux (`linux/amd64`, `linux/arm64`)
+- MacOS (`darwin/amd64`, `darwin/arm64`)
+- Windows (`windows/amd64`, `windows/arm64`)
+
 ### Features
 
 - Get informations about a game by searching by it name :
@@ -27,23 +33,58 @@ Gabbro is a simple CLI written in Go allowing a simplified interaction with the 
 - Get information about the different companies involved in a game by searching by it name :
   - Name, Description, etc.
 
->For the moment, Gabbro works only on **MacOs**, binaries compatible with other platforms will arrive soon!
-
 ## Installation
 
-### Setting up the CLI
+### Download
 
-To get started, you must download the lastest published binary of the application : 
+To get started, you must download the lastest published binary of the application, make sure to download the file corresponding to your platform :
 
-**[Download the Gabbro binary](https://github.com/akecel/gabbro/releases/latest/download/gabbro)**
+- Linux amd64 : `gabbro-linux-amd64`
+- Linux arm64 : `gabbro-linux-arm64`
+- MacOS amd64 : `gabbro-darwin-amd64`
+- MacOS arm64 : `gabbro-darwin-arm64`
+- Windows amd64 : `gabbro-windows-amd64.exe`
+- Windows arm64 : `gabbro-windows-arm64.exe`
 
-Then put the binary in your `$HOME/bin` directory and, if it's not already done, add `$HOME/bin` to your `$PATH`.
+**[Download Gabbro](https://github.com/akecel/gabbro/releases/latest/)**
+
+Note that for MacOS, you may have to download the binay with `curl` to use it :
+```bash
+# amd64
+curl https://github.com/Akecel/gabbro/releases/download/latest/gabbro-darwin-amd64
+
+# arm64
+curl https://github.com/Akecel/gabbro/releases/download/latest/gabbro-darwin-arm64
+```
+
+Then, rename this file `gabbro` (or `gabbro.exe` for Windows)
+
+> If you want to install Gabbro as a Go library, you can use `go install github.com/akecel/gabbro@latest`, note that the root of the configuration file will be your `$GOBIN`. You can also skip the next step and go directly to ['Configuration'](#Configuration).
+
+### Unix System (MacOS / Linux)
+
+Create a `bin` directory in your `$HOME` if it does not already exist:
+
+```bash
+mkdir $HOME/bin
+```
+
+Put the binary in your `$HOME/bin` directory and add `$HOME/bin` to your `$PATH`:
 
 ```bash
 export PATH="$HOME/bin:$PATH"
 ```
 
-Before we go, we still have one more step 😉
+Finally, give the right permissions to the binary:
+
+```bash
+chmod +x bin/gabbro
+```
+
+### Windows NT
+
+TODO
+
 ### Configuration
 
 You will now have to create crendentials for the **IGDB API** that you will put in the configuration file.
@@ -56,7 +97,7 @@ To do this, follow these steps :
 - Generate a Client Secret by pressing [New Secret].
 - Take note of the Client ID and Client Secret.
 
-Once this is done, you can create a `gabbro.yaml` file in your `$HOME/bin` folder.
+Once this is done, you can create a `gabbro.yaml` file in the same directory where you placed the `gabbro` binary.
 
 ```yaml
 client-id: "your-client-id"
