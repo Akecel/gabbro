@@ -40,7 +40,7 @@ jobs:
 
       - name: Upload Release Assets
         run: |
-          cd ../bin &&
+          cd bin &&
           for FILE in *;
             do
             gh release upload v${{ steps.tag.outputs.tag }} FILE 
