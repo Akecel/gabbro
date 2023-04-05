@@ -40,7 +40,7 @@ Gabbro is a Cross-Platefrom CLI written in Go allowing a simplified interaction 
 Install Gabbro with `go install` :
 
 ```bash
-go install github.com/akecel/gabbro@latest
+❯ go install github.com/akecel/gabbro@latest
 ```
 Go will automatically install it in your `$GOPATH/bin` directory which should be in your `$PATH`.
 Now you have to define your configuration file, see [Configuration](#Configuration).
@@ -63,7 +63,7 @@ the file corresponding to your platform :
 
 Note that for OS security reasons, you may have to download the binary with `curl` to use it :
 ```bash
-curl https://github.com/Akecel/gabbro/releases/download/latest/gabbro-your-plateform
+❯ curl https://github.com/Akecel/gabbro/releases/download/latest/gabbro-your-plateform
 ```
 
 Then, rename this file `gabbro` (or `gabbro.exe` for Windows)
@@ -73,19 +73,19 @@ Then, rename this file `gabbro` (or `gabbro.exe` for Windows)
 Create a `bin` directory in your `$HOME` if it does not already exist :
 
 ```bash
-mkdir $HOME/bin
+❯ mkdir $HOME/bin
 ```
 
 Put the binary in your `$HOME/bin` directory and add `$HOME/bin` to your `$PATH` :
 
 ```bash
-export PATH="$HOME/bin:$PATH"
+❯ export PATH="$HOME/bin:$PATH"
 ```
 
 Finally, give the right permissions to the binary :
 
 ```bash
-chmod +x bin/gabbro
+❯ chmod +x bin/gabbro
 ```
 
 ### Windows Systems
@@ -94,10 +94,10 @@ Create a `bin` directory in your `$HOME` / `%USERPROFILE%/bin` if it does not al
 
 ```bash
 # CMD
-mkdir %USERPROFILE%/bin
+❯ mkdir %USERPROFILE%/bin
 
 # Powershell
-mkdir $HOME/bin
+❯ mkdir $HOME/bin
 ```
 
 Put the `gabbro.exe` in this `bin` directory then :
