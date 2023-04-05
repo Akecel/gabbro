@@ -16,7 +16,7 @@
 
 ## About Gabbro
 
-Gabbro is a simple CLI written in Go allowing a simplified interaction with the **IGDB API**.
+Gabbro is a Cross-Platefrom CLI written in Go allowing a simplified interaction with the **IGDB API**.
 
 ### Supported plateforms
 
@@ -59,7 +59,7 @@ curl https://github.com/Akecel/gabbro/releases/download/latest/gabbro-darwin-arm
 
 Then, rename this file `gabbro` (or `gabbro.exe` for Windows)
 
-> If you want to install Gabbro as a Go library, you can use `go install github.com/akecel/gabbro@latest`, note that the root of the configuration file will be your `$GOBIN`. You can also skip the next step and go directly to ['Configuration'](#Configuration).
+> If you want to install Gabbro as a Go library, you can use `go install github.com/akecel/gabbro@latest`, note that the root of the configuration file will be your `$GOBIN`. You can also skip the next step and go directly to [Configuration](#Configuration).
 
 ### Unix System (MacOS / Linux)
 
@@ -97,7 +97,7 @@ To do this, follow these steps :
 - Generate a Client Secret by pressing [New Secret].
 - Take note of the Client ID and Client Secret.
 
-Once this is done, you can create a `gabbro.yaml` file in the same directory where you placed the `gabbro` binary.
+Once this is done, you can create a `gabbro.yaml` file in the same directory where you placed the `gabbro` binary and fill in the necessary credentials to use the IGDB API inside:
 
 ```yaml
 client-id: "your-client-id"
