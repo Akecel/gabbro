@@ -7,9 +7,17 @@ import (
 )
 
 func InitConfig() {
-	viper.AddConfigPath(".")          // Local config
-	viper.AddConfigPath("$HOME/bin/") // Binary config
-	viper.AddConfigPath("../")        // Test config
+	// Local config path
+	viper.AddConfigPath(".")
+
+	// Binary config path
+	viper.AddConfigPath("$GOPATH/bin/")
+	viper.AddConfigPath("$HOME/bin/")
+	viper.AddConfigPath("%USERPROFILE%/bin/")
+
+	// Test config path
+	viper.AddConfigPath("../")
+	
 	viper.SetConfigName("gabbro")
 	viper.SetConfigType("yaml")
 	viper.AutomaticEnv()
