@@ -35,9 +35,22 @@ Gabbro is a Cross-Platefrom CLI written in Go allowing a simplified interaction 
 
 ## Installation
 
-### Download
+### Download as Go Library
 
-To get started, you must download the lastest published binary of the application, make sure to download the file corresponding to your platform :
+Install Gabbro with `go install` :
+
+```bash
+go install github.com/akecel/gabbro@latest
+```
+Go will automatically install it in your `$GOPATH/bin` directory which should be in your `$PATH`.
+Now you have to define your configuration file, see [Configuration](#Configuration).
+
+### Download Binary
+
+If Go is not installed on your machine, you can also download Gabbro as a simple binary.
+
+To get started, you need to download the latest published binary of the application, make sure you download 
+the file corresponding to your platform:
 
 - Linux amd64 : `gabbro-linux-amd64`
 - Linux arm64 : `gabbro-linux-arm64`
@@ -48,20 +61,14 @@ To get started, you must download the lastest published binary of the applicatio
 
 **[Download Gabbro](https://github.com/akecel/gabbro/releases/latest/)**
 
-Note that for MacOS, you may have to download the binay with `curl` to use it :
+Note that for OS security reasons, you may have to download the binary with `curl` to use it :
 ```bash
-# amd64
-curl https://github.com/Akecel/gabbro/releases/download/latest/gabbro-darwin-amd64
-
-# arm64
-curl https://github.com/Akecel/gabbro/releases/download/latest/gabbro-darwin-arm64
+curl https://github.com/Akecel/gabbro/releases/download/latest/gabbro-your-plateform
 ```
 
 Then, rename this file `gabbro` (or `gabbro.exe` for Windows)
 
-> If you want to install Gabbro as a Go library, you can use `go install github.com/akecel/gabbro@latest`, note that the root of the configuration file will be your `$GOBIN`. You can also skip the next step and go directly to [Configuration](#Configuration).
-
-### Unix System (MacOS / Linux)
+**Unix System (MacOS / Linux):**
 
 Create a `bin` directory in your `$HOME` if it does not already exist:
 
@@ -81,9 +88,25 @@ Finally, give the right permissions to the binary:
 chmod +x bin/gabbro
 ```
 
-### Windows NT
+**Windows NT:**
 
-TODO
+Create a `bin` directory in your `$HOME` / `%USERPROFILE%/bin` if it does not already exist:
+
+```bash
+# CMD
+mkdir %USERPROFILE%/bin
+
+# Powershell
+mkdir $HOME/bin
+```
+
+Put the `gabbro.exe` in this `bin` directory then:
+- *Windows + R* to open the Run command window
+- Run `sysdm.cpl`
+- Go to *Advanced* -> *Environment Variables*
+- Click on *PATH* then Edit it
+- Click on *New* and enter `%USERPROFILE%/bin`
+- Valid then logout / logback
 
 ### Configuration
 
@@ -97,14 +120,19 @@ To do this, follow these steps :
 - Generate a Client Secret by pressing [New Secret].
 - Take note of the Client ID and Client Secret.
 
-Once this is done, you can create a `gabbro.yaml` file in the same directory where you placed the `gabbro` binary and fill in the necessary credentials to use the IGDB API inside:
+Once this is done, you can create a `gabbro.yaml` file and fill in the necessary credentials to use the IGDB API inside:
 
 ```yaml
 client-id: "your-client-id"
 access-token: "your-access-token"
 ```
 
-You can verify that the CLI is properly installed and configured by using this command:
+Now place `gabbro.yaml` in the appropriate directory so that the program can run properly :
+- `$GOPATH/bin` -> If installed as Go Library
+- `$HOME/bin` -> If installed as Go Binary (MacOS & Linux)
+- `%USERPROFILE%/bin` If installed as Go Binary (Windows)
+
+Finaly, you can check that the CLI is properly installed and configured by using this command:
 
 ```bash
 ❯ gabbro
@@ -125,7 +153,7 @@ Flags:
 Use "gabbro [command] --help" for more information about a command.
 ```
 
-You are now ready to go ! 🚀
+You are ready to go ! 🚀
 
 ## Usage
 
