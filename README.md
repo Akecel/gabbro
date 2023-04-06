@@ -63,7 +63,7 @@ the file corresponding to your platform :
 
 Note that for OS security reasons, you may have to download the binary with `curl` to use it :
 ```bash
-❯ curl https://github.com/Akecel/gabbro/releases/download/latest/gabbro-your-plateform
+❯ curl -k -L -s https://github.com/Akecel/gabbro/releases/download/latest/gabbro-your-plateform > gabbro
 ```
 
 Then, rename this file `gabbro` (or `gabbro.exe` for Windows)
@@ -94,7 +94,7 @@ Create a `bin` directory in your `$HOME` / `%USERPROFILE%/bin` if it does not al
 
 ```bash
 # CMD
-❯ mkdir %USERPROFILE%/bin
+❯ mkdir %USERPROFILE%\bin
 
 # Powershell
 ❯ mkdir $HOME/bin
@@ -105,9 +105,9 @@ Put the `gabbro.exe` in this `bin` directory then :
 - *Windows + R* to open the Run command window
 - Run `sysdm.cpl`
 - Go to *Advanced* -> *Environment Variables*
-- Click on *PATH* then Edit it
-- Click on *New* and enter `%USERPROFILE%/bin`
-- Valid then logout / logback
+- Click on *PATH* (user one) then *Edit* it
+- Add `%USERPROFILE%/bin` (separate it from the rest with `;` if needed)
+- Valid then Logout / Logback to refresh
 
 ### Configuration
 
